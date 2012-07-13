@@ -11,5 +11,6 @@ urlpatterns = patterns('',
    #use this url or the next one..they are the same explanation.....
    # url(r'^posts/search/(\w+)$', 'blog.views.post_search'), 
     url(r'^posts/search/(?P<term>\w+)$','blog.views.post_search'),
+    url(r'^comments/(?P<id>\d+)/edit/$','blog.views.edit_comment'),
 )
 

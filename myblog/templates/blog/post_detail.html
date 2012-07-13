@@ -17,11 +17,22 @@
  <p> {{ c.body }} </p>
  <h5> datecreated:  {{ c.created}}</h5> 
  <h5> dateupdated:  {{ c.updated }}</h5> 
+<div>
 
+<a href= "/blog/comments/{{ c.id }}/edit">Edit Comment
+</a>
 
+</div>
 {% endfor %}
+
+<h3> New comment: </h3>
+<div>
+
+<form method='post' action="">
+    {{ form.as_p }}  
+    <input type='submit' name='Submit'>
+</form>
+</div>
 {% endblock %}
-
-
 
 

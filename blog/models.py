@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from django.db import models
 
-# Create your models here.
+# Create your models here. django gives each model an id attribute so we dont specify it.
 
 class Post(models.Model):
     title = models.CharField(max_length=60)
@@ -41,10 +41,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_display=('post','author','body_first_60','created','updated')    
     list_filter=('created','author')
      
-  	
-    
-  
-  
-  
+
 admin.site.register(Post,PostAdmin)
 admin.site.register(Comment,CommentAdmin)   
