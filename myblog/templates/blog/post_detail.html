@@ -11,23 +11,21 @@
 
 </ol>
 
-<a href="/blog/posts" >
-<h2>link to myblogtitle</h2>
-</a>
-
 {% for c in comments %}
 
-   
+  
 <li><h2> {{ c.author }}</h2></li>
  <p> {{ c.body }} </p>
  <h5> datecreated:  {{ c.created}}</h5> 
  <h5> dateupdated:  {{ c.updated }}</h5> 
+{% if c.author == usernom %}
 <div>
 
 <a href= "/blog/comments/{{ c.id }}/edit">Edit Comment
 </a>
 
 </div>
+{% endif %}
 {% endfor %}
 
 <h3> New comment: </h3>

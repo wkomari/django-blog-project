@@ -25,19 +25,23 @@ class CommentForm(ModelForm):
 @csrf_exempt
 def post_detail(request, id, showComments=False):
     p=Post.objects.get(pk=id)
+    uname=request.user
     if request.method == 'POST':
+     
        comment = Comment(post=p)
        form = CommentForm(request.POST, instance=comment)
+       #form = CommentForm(request.user, instance=comment.author)
        if form.is_valid():
           form.save()
+       
        return HttpResponseRedirect(request.path)
     else:
        form = CommentForm()  # empty comment form
     
     	    
     for i in p.commentsss.all():  # the commentsss  here is in the model as a related name in the class Comment
-      
-      my_context = Context({'post':p,'comments':p.commentsss.all(),'form':form})
+  
+      my_context = Context({'post':p,'usernom':uname,'comments':p.commentsss.all(),'form':form})
     
     return render_to_response ('blog/post_detail.html', my_context)  
  

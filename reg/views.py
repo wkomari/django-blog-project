@@ -10,6 +10,7 @@ from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
+from django.template import Context, loader
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -30,13 +31,9 @@ def do_login(request):
            
        else:
            print 'disabled account or error message'
-           return HttpResponse("wrong Username or password. User Authentication failed!!!")
-   # for i in uname.all():  
-      
-   #   my_context = Context({'usernom':uname,'form':form})
-    
-   # return render_to_response ('reg/login.html', my_context)  
-    
+           return HttpResponse("wrong Username or password. User Authentication failed!!!")  
+  
+
     form = LoginForm()
     return render_to_response('reg/login.html', {
         'form': form,
