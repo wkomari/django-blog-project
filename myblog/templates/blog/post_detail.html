@@ -3,6 +3,7 @@
 {% extends "blog/base.html" %}
 {% block content %}
 
+<h3>POST</h3>
 <ol>
 <h1>{{ post.title }}</h1>
 <h6> {{ post.body }} </h6>
@@ -11,20 +12,21 @@
 
 </ol>
 
+<h3>COMMENTS</h3>
 {% for c in comments %}
-
+	
   
 <li><h2> {{ c.author }}</h2></li>
- <p> {{ c.body }} </p>
- <h5> datecreated:  {{ c.created}}</h5> 
- <h5> dateupdated:  {{ c.updated }}</h5> 
-{% if c.author == usernom %}
+<p> {{ c.body }} </p>
+<h5> datecreated:  {{ c.created}}</h5> 
+<h5> dateupdated:  {{ c.updated }}</h5> 
 <div>
+{% if user == c.author %}
 
 <a href= "/blog/comments/{{ c.id }}/edit">Edit Comment
 </a>
-
 </div>
+
 {% endif %}
 {% endfor %}
 
@@ -32,8 +34,8 @@
 <div>
 
 <form method='post' action="">
-    {{ form.as_p }}  
-    <input type='submit' name='Submit'>
+{{ form.as_p }}  
+<input type='submit' name='Submit'>
 </form>
 </div>
 {% endblock %}

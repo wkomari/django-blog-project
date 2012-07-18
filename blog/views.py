@@ -20,28 +20,31 @@ def post_list(request):
 class CommentForm(ModelForm):
    class Meta:
      exclude=['post']
+     exclude=['author']
      model=Comment
 
 @csrf_exempt
 def post_detail(request, id, showComments=False):
     p=Post.objects.get(pk=id)
-    uname=request.user
+    user_name=request.user
     if request.method == 'POST':
      
        comment = Comment(post=p)
        form = CommentForm(request.POST, instance=comment)
-       #form = CommentForm(request.user, instance=comment.author)
+       
        if form.is_valid():
+          comment.author = user_name
           form.save()
        
        return HttpResponseRedirect(request.path)
     else:
-       form = CommentForm()  # empty comment form
-    
+       
+       form = CommentForm()  
+
     	    
     for i in p.commentsss.all():  # the commentsss  here is in the model as a related name in the class Comment
   
-      my_context = Context({'post':p,'usernom':uname,'comments':p.commentsss.all(),'form':form})
+      my_context = Context({'post':p,'user':user_name,'comments':p.commentsss.all(),'form':form})
     
     return render_to_response ('blog/post_detail.html', my_context)  
  

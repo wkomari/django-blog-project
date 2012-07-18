@@ -1,4 +1,5 @@
 <!-- parent template  -->
+<!DOCTYPE html>  <!-- this is just a declaration which tells the browser the version of html being used   -->
 <html>
 <head>
 
@@ -7,7 +8,7 @@
 </head>
 
 <body leftmargin="70px" topmargin="70px" marginwidth="55px" marginheight="65px">
-<div class="container">
+<div style="color:#8B008B" class="container">
 
 <h1> WELCOME TO MY DJANGO BLOG PAGE </h1>
 
@@ -19,16 +20,24 @@
 <h2>link to myblogtitle</h2>
 </a>
  
-<div id="content">
+
+<div style="color:#8B0000" id="content">
 
 {% block content %}
 
 {% endblock %}
- 
+
 </div>
+
 </div>
+<!--<div id="footer" class= "footerIEPadder">
+&copy; DESIGNED BY OMARI WILLIAM KWADWO
+</div>
+-->
 </body>
 </html>
+
+ 
 
 
 	
