@@ -19,14 +19,14 @@ def post_list(request):
    
 class CommentForm(ModelForm):
    class Meta:
-     exclude=['post']
-     exclude=['author']
+     exclude=['post','author']  # the exclude is a list
+     #exclude=['author']
      model=Comment
 
 @csrf_exempt
 def post_detail(request, id, showComments=False):
     p=Post.objects.get(pk=id)
-    user_name=request.user
+    user_name=str(request.user)
     if request.method == 'POST':
      
        comment = Comment(post=p)
