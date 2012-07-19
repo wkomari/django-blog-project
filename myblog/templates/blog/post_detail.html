@@ -2,8 +2,10 @@
 
 {% extends "blog/base.html" %}
 {% block content %}
-
+<div style="color:#808000">
 <h3>POST</h3>
+</div>
+<div style="color:#4B0082">
 <ol>
 <h1>{{ post.title }}</h1>
 <h6> {{ post.body }} </h6>
@@ -11,8 +13,13 @@
 <h6> dateupdated:    {{ post.updated }}  </h6>
 
 </ol>
+</div>
+<div style="color:#00FF00 ">
 <h3> {{user}} : You are currently login</h3>
+</div>
+<div style="color:#FF8C00">
 <h3>COMMENTS</h3>
+</div>
 {% for c in comments %}
 	
   
